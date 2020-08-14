@@ -1,0 +1,41 @@
+{
+    "testMatch": [
+      "**/src/**/*spec.js?(x)"
+    ],
+    "collectCoverage": true,
+    "verbose": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "<rootDir>/src/assets/vendor",
+      "<rootDir>/src/teamsite"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 45,
+        "functions": 65,
+        "lines": 55,
+        "statements": 55
+      }
+    },
+    "coverageReporters": [
+      "json",
+      "html",
+      "lcov"
+    ],
+    "globals": {
+      "APP_MODE": "TEST"
+    },
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.(css|less)$": "./styleMock.js",
+      "^.+\\.(png|jpg)$": "./styleMock.js"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/enzyme.config.js",
+    "testURL": "http://localhost:9000/lloyds/#/"
+  }
