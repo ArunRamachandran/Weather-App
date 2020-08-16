@@ -6,7 +6,8 @@ import { fetchWeatherInfo, updateDisplayFormat, updateLocation } from '../action
 import * as Constants from '../constants/constants';
 import { ImageHolder } from '../components/ImageHolder';
 import { WeatherWidget } from '../components/WeatherWidget';
-import { DataCard } from '../components/DataCard';
+import { AdditionalDetails } from '../components/AdditionalDetails';
+import { DataList } from '../components/DataList';
 import { transformWeatherData, abstractTemperatureInfo } from '../utils/weatherUtils';
 
 import CloudImg from '../static/cloud.svg';
@@ -50,33 +51,13 @@ export const WeatherApp = () => {
         dispatch(fetchWeatherInfo(location));
     }
 
-    const _renderAdditonalWeatherInfo = (transformedData, weatherData, unit) => {
-        const dateInfo = new Date().toDateString();
-        return (
-            <div className="main-data-section">
-                <p className="header-text">{`Today, ${dateInfo} | ${new Date().toLocaleTimeString('en-US', { hour12: true })}`}</p>
-                <div className="detailed-view">
-                    <p>Feels Like <span>{transformedData.feelsLike}{unit}</span></p>
-                    <div className="temperature-panel">
-                      <p>Min - <span>{transformedData.tempMin}{unit}</span></p>
-                      <p>Max - <span>{transformedData.tempMax}{unit}</span></p>  
-                    </div>
-                    <div className="generic-details">
-                        <p>Humidity <span>{weatherData.main.humidity}</span></p>
-                        <p>Wind speed <span>{weatherData.wind.speed}</span></p>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
     const _renderAvailableCities = () => {
         return (
             <div className="city-list-items">
                 <p>Choose a city from the list</p>
                 { Constants.CITIES.map(
                     (city, index) => 
-                        <DataCard 
+                        <DataList 
                             data={city} 
                             key={index} 
                             activeLocation={activeLocation} 
@@ -105,7 +86,7 @@ export const WeatherApp = () => {
                 <meta name="description" content="Weather application" />
                 <meta name="keywords" cpntent="weather, temperature, location, current weather, open-source, React" />
             </Helmet>
-            <section className="weather-app-container">
+            <div className="weather-app-container">
                 <ActionBar/>
                 { transformedData && 
                     <WeatherWidget 
@@ -117,11 +98,17 @@ export const WeatherApp = () => {
                     /> 
                 }
                 {_renderBackgroundImage()}
-            </section>
-                <section className="additional-info-wrapper">
-                    { transformedData && _renderAdditonalWeatherInfo(transformedData, weatherData, unit)}
-                    {_renderAvailableCities()}
-                </section>
+            </div>
+            <div className="additional-info-wrapper">
+                { transformedData && 
+                    <AdditionalDetails 
+                        transformedData={transformedData} 
+                        weatherData={weatherData}
+                        unit={unit}
+                    />
+                }
+                {_renderAvailableCities()}
+            </div>
         </>
     )
 }
