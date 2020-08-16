@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { Helmet } from "react-helmet";
 import { ActionBar } from './ActionBar';
 import { fetchWeatherInfo, updateDisplayFormat, updateLocation } from '../actions/actions';
 import * as Constants from '../constants/constants';
@@ -99,6 +100,11 @@ export const WeatherApp = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Cloud Sync - Weather App</title>
+                <meta name="description" content="Weather application" />
+                <meta name="keywords" cpntent="weather, temperature, location, current weather, open-source, React" />
+            </Helmet>
             <section className="weather-app-container">
                 <ActionBar/>
                 { transformedData && 
