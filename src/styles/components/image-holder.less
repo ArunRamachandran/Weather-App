@@ -1,0 +1,60 @@
+.image-holder {
+    display: flex;
+
+    img {
+        margin: 0 auto;
+    }
+}
+
+.main-image-bg {
+    width: 100%;
+    margin-top: 4.2em;
+
+    img {
+        @media only screen and (max-width: 800px) {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+    }
+}
+
+.cloud-left-wing {
+
+    position: absolute;
+    top: 12em;
+    left: 5em;
+
+    @media only screen and (max-width: 800px) {
+        position: relative;
+        left: 0;
+    }
+
+    img {
+        @media only screen and (max-width: 800px) {
+            height: 5em;
+            width: 7em;
+            margin-right: 2em;
+        }
+    }
+
+}
+
+.cloud-right-wing {
+
+    position: absolute;
+    right: 5em;
+    top: 10em;
+
+    @media only screen and (max-width: 800px) {
+        position: relative;
+        right: 0;
+        top: 0;
+    }
+
+    img {
+        @media only screen and (max-width: 800px) {
+            margin-left: 2em;
+        }
+    }   
+}

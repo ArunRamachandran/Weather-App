@@ -1,16 +1,20 @@
+import { CELSIUS, FARENHEIT } from '../constants/constants';
+
 export const convertToFarenheit = (c) => {
     let farenheit =  (c * (9/5)) + 32;
-    return Math.round(farenheit * 10) / 10;
+    return roundOffdata(farenheit, 10);
 }
 
 export const convertToDegreeCelsius = (f) => {
     let degreeC = ((f - 32) * (5/9)); 
-    return Math.round(degreeC * 10) / 10;
+    return roundOffdata(degreeC, 10);
 }
 
-export const transformWeatherData = (data) => {
+export const roundOffdata = (temperature, roundOfValue) => ((Math.round(temperature * roundOfValue)) / roundOfValue)
+
+export const transformWeatherData = (data, unit) => {
     Object.keys(data).forEach((key) => {
-        data[key] = convertToFarenheit(data[key])
+        data[key] = FARENHEIT === unit ? convertToFarenheit(data[key]) : roundOffdata(data[key], 1)
     });
 
     return data;

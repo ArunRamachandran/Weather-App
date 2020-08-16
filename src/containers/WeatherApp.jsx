@@ -50,9 +50,10 @@ export const WeatherApp = () => {
     }
 
     const _renderAdditonalWeatherInfo = (transformedData, weatherData, unit) => {
+        const dateInfo = new Date().toDateString();
         return (
             <div className="main-data-section">
-                <p className="header-text">Now</p>
+                <p className="header-text">{`Today, ${dateInfo} | ${new Date().toLocaleTimeString('en-US', { hour12: true })}`}</p>
                 <div className="detailed-view">
                     <p>Feels Like <span>{transformedData.feelsLike}{unit}</span></p>
                     <div className="temperature-panel">
@@ -88,19 +89,17 @@ export const WeatherApp = () => {
 
     const _applyPreferredConversion = (data) => {
         if (data) {
-            return preferredConversion === Constants.FARENHEIT ? transformWeatherData(data) : data;
+            return transformWeatherData(data, preferredConversion)
         } else return undefined;
     }
 
     const temperatureInfo = abstractTemperatureInfo(weatherData);
-    const transformedData = _applyPreferredConversion(temperatureInfo);
-    const unit = preferredConversion === Constants.CELSIUS ? '°C' : '°F';
-
-    console.log("data : ", temperatureInfo);
-    console.log("transformedData : ", transformedData);
+    const transformedData = _applyPreferredConversion(temperatureInfo, preferredConversion);
+    const unit = Constants.CELSIUS === preferredConversion ? '°C' : '°F';
 
     return (
-        <div className="weather-app-container">
+        <>
+            <section className="weather-app-container">
                 <ActionBar/>
                 { transformedData && 
                     <WeatherWidget 
@@ -112,10 +111,11 @@ export const WeatherApp = () => {
                     /> 
                 }
                 {_renderBackgroundImage()}
+            </section>
                 <section className="additional-info-wrapper">
                     { transformedData && _renderAdditonalWeatherInfo(transformedData, weatherData, unit)}
                     {_renderAvailableCities()}
                 </section>
-        </div>
+        </>
     )
 }
