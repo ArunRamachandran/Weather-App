@@ -40,12 +40,6 @@ const weatherData = (state = initialState, action) => {
                 preferredConversion: payload
             }
 
-        case Constants.UPDATE_LOCATION:
-            return {
-                ...state,
-                preferredLocation: payload
-            }
-
         default:
             return state;
     }

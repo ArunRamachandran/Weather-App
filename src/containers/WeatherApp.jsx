@@ -2,7 +2,7 @@ import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Helmet } from "react-helmet";
 import { ActionBar } from './ActionBar';
-import { fetchWeatherInfo, updateDisplayFormat, updateLocation } from '../actions/actions';
+import { fetchWeatherInfo } from '../actions/actions';
 import * as Constants from '../constants/constants';
 import { ImageHolder } from '../components/ImageHolder';
 import { WeatherWidget } from '../components/WeatherWidget';

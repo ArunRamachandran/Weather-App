@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/store/store.js</title>
+    <title>Code coverage report for src/components/AdditionalDetails.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/store</a> store.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> AdditionalDetails.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -75,12 +75,29 @@
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -88,30 +105,46 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from '../reducers';
-import { composeWithDevTools } from 'redux-devtools-extension'
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 &nbsp;
-const configureStore = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    const store = <span class="cstat-no" title="statement not covered" >createStore(</span>
-        rootReducer,
-        composeWithDevTools(
-            applyMiddleware(thunk)
-        )
-    );
+export const AdditionalDetails = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return store;</span>
-}
+    const {
+        transformedData,
+        weatherData,
+        unit
+    } = <span class="cstat-no" title="statement not covered" >props;</span>
 &nbsp;
-const store = <span class="cstat-no" title="statement not covered" >configureStore();</span>
+    const dateInfo = <span class="cstat-no" title="statement not covered" >new Date().toDateString();</span>
 &nbsp;
-export default store;</pre></td></tr></table></pre>
+<span class="cstat-no" title="statement not covered" >    return (</span>
+        &lt;div className="main-data-section"&gt;
+            &lt;p className="header-text"&gt;{`Today, ${dateInfo} | ${new Date().toLocaleTimeString('en-US', { hour12: true })}`}&lt;/p&gt;
+            &lt;div className="detailed-view"&gt;
+                &lt;p&gt;Feels Like &lt;span&gt;{transformedData.feelsLike}{unit}&lt;/span&gt;&lt;/p&gt;
+                &lt;div className="temperature-panel"&gt;
+                    &lt;p&gt;Min - &lt;span&gt;{transformedData.tempMin}{unit}&lt;/span&gt;&lt;/p&gt;
+                    &lt;p&gt;Max - &lt;span&gt;{transformedData.tempMax}{unit}&lt;/span&gt;&lt;/p&gt;  
+                &lt;/div&gt;
+                &lt;div className="generic-details"&gt;
+                    &lt;p&gt;Humidity &lt;span&gt;{weatherData.main.humidity}&lt;/span&gt;&lt;/p&gt;
+                    &lt;p&gt;Wind speed &lt;span&gt;{weatherData.wind.speed}&lt;/span&gt;&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    )
+    
+}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

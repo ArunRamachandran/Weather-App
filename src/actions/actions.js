@@ -39,25 +39,15 @@ const setAppLoadFailure = () => ({
     type: Constants.API_FAILURE
 })
 
-const updateDisplayFormat = (data) => ({
-    type: Constants.UPDATE_DISPLAY_FORMAT,
-    payload: data
-})
-
 const updatePreferredConversion = (data) => ({
     type: Constants.UPDATE_PREFERRED_CONVERSION,
-    payload: data
-})
-
-const updateLocation = (data) => ({
-    type: Constants.UPDATE_LOCATION,
     payload: data
 })
 
 export {
     fetchWeatherInfo,
     updateWeatherInfo,
-    updateDisplayFormat,
     updatePreferredConversion,
-    updateLocation
+    setAppLoader,
+    setAppLoadFailure
 }
